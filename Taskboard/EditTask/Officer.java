@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 
 public class Officer{
     public static ArrayList<Task> tasks = new ArrayList<>();
-    public static int curID = 0;
+    public static int curEditTaskID = 0;
     public static JPanel curPanel;
 
     public static ArrayList<Task> getTasks() {
@@ -14,31 +14,19 @@ public class Officer{
         Officer.tasks.add(new Task(subject, body, tasks.size()));
     }
     public static void editTask(String subject, String body) {
-        Officer.tasks.get(getCurID()).setSubject(subject);
-        Officer.tasks.get(getCurID()).setBody(body);
+        Officer.tasks.get(getCurTaskID()).setSubject(subject);
+        Officer.tasks.get(getCurTaskID()).setBody(body);
         for(Task t : tasks){
             System.out.println(t);
         }
     }
 
-
-    
-
-
-    public static int getCurID() {
-        return curID;
+    public static int getCurTaskID() {
+        return curEditTaskID;
     }
 
-    public static void setCurID(int curID) {
-        Officer.curID = curID;
-    }
-
-    public static JPanel getCurPanel() {
-        return curPanel;
-    }
-
-    public static void setCurPanel(JPanel curPanel) {
-        Officer.curPanel = curPanel;
+    public static void setCurTaskID(int curID) {
+        Officer.curEditTaskID = curID;
     }
 
 }

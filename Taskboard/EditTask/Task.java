@@ -10,7 +10,7 @@ public class Task{
 
     @Override
     public String toString(){
-        return id + ": " + subject + ": " + body;
+        return id + ":" + subject + ":" + body;
     }
 
     public String getSubject() {

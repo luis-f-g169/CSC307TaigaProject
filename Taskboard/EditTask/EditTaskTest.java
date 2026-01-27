@@ -6,18 +6,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class EditTaskTest extends JFrame{
+    Nanny nanny;
     public static void main(String[] arr) throws IOException{
         EditTaskTest app = new EditTaskTest();
         app.setSize(800,600);
         app.setTitle("Taiga");
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app.setLocationRelativeTo(null);
         app.setResizable(false);
         app.setVisible(true);
-        
-
     }
 
     public EditTaskTest() throws IOException{
+        nanny = new Nanny(this);
         // Officer.addTask("Task1", "Make a GUI");
         // Officer.addTask("Task2", "Add event listener");
         // Officer.addTask("Task3", "Load existing data");
@@ -30,28 +31,22 @@ public class EditTaskTest extends JFrame{
             String[] parts = line.split(":", 3);
             Officer.addTask(parts[1], parts[2]);
         }
-        for(Task t : Officer.getTasks()){
-            System.out.println("t: " + t);
-        }
+
         
-        setPanel(new TaskListPanel(this));
+        setPanel(new TaskListPanel(this, nanny));
         
 
     }
 
     private void setPanel(JPanel p) {
-        if (Officer.getCurPanel() != null) remove(Officer.getCurPanel());
-        Officer.setCurPanel(p);
-        add(Officer.getCurPanel());
+        setContentPane(p);
         revalidate();
         repaint();
     }
 
     public void showEdit(int id) {
-        EditPanel edit = new EditPanel(Officer.getTasks().get(id));
-        Officer.setCurID(id);
-        edit.addRemoveListener(e -> setPanel(new TaskListPanel(this)));
-
+        EditPanel edit = new EditPanel(Officer.getTasks().get(id), nanny);
+        Officer.setCurTaskID(id);
         setPanel(edit);
     }
 }
