@@ -1,7 +1,7 @@
 import java.util.*;
 import javax.swing.JPanel;
 
-public class Officer{
+public class Blackboard{
     public static ArrayList<Task> tasks = new ArrayList<>();
     public static int curEditTaskID = 0;
     public static JPanel curPanel;
@@ -11,11 +11,11 @@ public class Officer{
     }
 
     public static void addTask(String subject, String body) {
-        Officer.tasks.add(new Task(subject, body, tasks.size()));
+        Blackboard.tasks.add(new Task(subject, body, tasks.size()));
     }
     public static void editTask(String subject, String body) {
-        Officer.tasks.get(getCurTaskID()).setSubject(subject);
-        Officer.tasks.get(getCurTaskID()).setBody(body);
+        Blackboard.tasks.get(getCurTaskID()).setSubject(subject);
+        Blackboard.tasks.get(getCurTaskID()).setBody(body);
         for(Task t : tasks){
             System.out.println(t);
         }
@@ -26,7 +26,7 @@ public class Officer{
     }
 
     public static void setCurTaskID(int curID) {
-        Officer.curEditTaskID = curID;
+        Blackboard.curEditTaskID = curID;
     }
 
 }

@@ -3,14 +3,12 @@ import java.awt.*;
 import javax.swing.*;
 
 public class TaskListPanel extends JPanel{
-    private final EditTaskTest main;
     
     public TaskListPanel(EditTaskTest main, Nanny nanny) {
-        this.main = main;
-        setLayout(new GridLayout(Officer.getTasks().size(), 2));
+        setLayout(new GridLayout(Blackboard.getTasks().size(), 2));
 
-        for (int i = 0; i < Officer.getTasks().size(); i++) {
-            Task t = Officer.getTasks().get(i);
+        for (int i = 0; i < Blackboard.getTasks().size(); i++) {
+            Task t = Blackboard.getTasks().get(i);
 
             JTextField taskText = new JTextField(t.getSubject() + ": " + t.getBody());
             taskText.setEditable(false);

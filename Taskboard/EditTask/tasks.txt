@@ -1,8 +1,0 @@
-0:Task 1:Make a GUI that looks cool now
-1:Task 2:Add event listener now pls is this is working
-2:Task 3:Load existing data
-3:Task 4:Save new data when user presses save
-4:Task 5:idk what to do 123
-5:Task 6:idk what to do 234
-6:Task 7:i figured it out
-7:Task 8:idk what to do 4
