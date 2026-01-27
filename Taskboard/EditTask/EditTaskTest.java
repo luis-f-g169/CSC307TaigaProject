@@ -2,8 +2,6 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,18 +13,7 @@ public class EditTaskTest extends JFrame{
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setResizable(false);
         app.setVisible(true);
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            List<String> lines = new ArrayList();
-            for(Task t : Officer.getTasks()){
-                lines.add(t.toString());
-            }
-            try {
-                Files.write(Path.of("Taskboard/EditTask/tasks.txt"), lines);
-            } catch (IOException ex) {
-                System.getLogger(EditTaskTest.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-            }
-        }));
+        
 
     }
 
@@ -40,10 +27,12 @@ public class EditTaskTest extends JFrame{
         // Officer.addTask("Task7", "idk what to do 3");
         // Officer.addTask("Task8", "idk what to do 4");
         for (String line : Files.readAllLines(Path.of("Taskboard/EditTask/tasks.txt"))) {
-            String[] parts = line.split("\t", 2);
-            Officer.addTask(parts[0], parts[1]);
+            String[] parts = line.split(":", 3);
+            Officer.addTask(parts[1], parts[2]);
         }
-
+        for(Task t : Officer.getTasks()){
+            System.out.println("t: " + t);
+        }
         
         setPanel(new TaskListPanel(this));
         

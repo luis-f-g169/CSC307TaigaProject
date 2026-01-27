@@ -4,6 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -55,7 +60,20 @@ public class EditPanel extends JPanel{
         saveButton.addActionListener(e -> {
             Officer.editTask(subject.getText(), body.getText()); 
             listener.actionPerformed(e);
+            saveData();
         });
+    }
+
+    public void saveData(){
+        List<String> lines = new ArrayList();
+        for(Task t : Officer.getTasks()){
+            lines.add(t.toString());
+        }
+        try {
+            Files.write(Path.of("Taskboard/EditTask/tasks.txt"), lines);
+        } catch (IOException ex) {
+            System.getLogger(EditTaskTest.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }
 
     

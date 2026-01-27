@@ -1,8 +1,8 @@
-0: Task 1: Make a GUI
-1: Task 2: Add event listener
-2: Task 3: Load existing data
-3: Task 4: Save new data
-4: Task 5: idk what to do 1
-5: Task 6: idk what to do 2
-6: Task 7: idk what to do 3
-7: Task 8: idk what to do 4
+0:  Task 1:  Make a GUI
+1:  Task 2:  Add event listener now
+2:  Task 3:  Load existing data pls
+3:  Task 4:  Save new data
+4:  Task 5:  idk what to do 1
+5:  Task 6:  idk what to do 2
+6:  Task 7:  idk what to do 3
+7:  Task 8:  idk what to do 4
